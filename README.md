@@ -15,13 +15,18 @@ Gabungan 6 mockup Stitch menjadi **1 aplikasi tunggal** (SPA) tanpa mengubah tam
 
 ## Cara menjalankan
 
+**Online (GitHub Pages):** langsung buka URL setelah Pages aktif.
+
+**Lokal:** server statik diperlukan karena view dimuat via `fetch()`:
+
 ```bash
-# dari folder app/
-node ../serve.js        # atau server statis apa pun di port 5555
-# buka http://localhost:5555/
+# dari folder ini
+python -m http.server 5555
+# atau
+npx serve -p 5555
 ```
 
-Server statis diperlukan karena view dimuat via `fetch()`.
+Lalu buka `http://localhost:5555/`. (Membuka `index.html` langsung via `file://` tidak berfungsi.)
 
 ## Alur demo
 
