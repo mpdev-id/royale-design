@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="id" style="">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Royale Gym &amp; Cafe - POS &amp; Attendance Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-surface-variant": "#4e4639",
+          "surface-container-highest": "#e8e1da",
+          "outline": "#7f7667",
+          "tertiary-fixed": "#ffdea2",
+          "surface-container-lowest": "#ffffff",
+          "on-tertiary": "#ffffff",
+          "tertiary-fixed-dim": "#e5c27e",
+          "on-secondary-container": "#1c7245",
+          "on-error": "#ffffff",
+          "on-primary-fixed": "#261900",
+          "inverse-surface": "#33302b",
+          "outline-variant": "#d1c5b4",
+          "on-tertiary-container": "#4e3700",
+          "surface-variant": "#e8e1da",
+          "on-background": "#1e1b17",
+          "secondary-fixed": "#a1f5bc",
+          "tertiary-container": "#c2a161",
+          "inverse-primary": "#e9c176",
+          "surface-bright": "#fff8f1",
+          "surface-tint": "#775a19",
+          "secondary": "#136c3f",
+          "error": "#ba1a1a",
+          "background": "#fff8f1",
+          "on-primary": "#ffffff",
+          "surface": "#fff8f1",
+          "on-primary-container": "#4e3700",
+          "inverse-on-surface": "#f6f0e8",
+          "on-tertiary-fixed": "#261900",
+          "error-container": "#ffdad6",
+          "secondary-container": "#a1f5bc",
+          "surface-dim": "#dfd9d2",
+          "primary-fixed-dim": "#e9c176",
+          "surface-container-high": "#eee7e0",
+          "on-secondary-fixed": "#00210f",
+          "on-tertiary-fixed-variant": "#5b430a",
+          "primary": "#775a19",
+          "surface-container": "#f3ede5",
+          "tertiary": "#755a21",
+          "on-surface": "#1e1b17",
+          "surface-container-low": "#f9f3eb",
+          "on-secondary": "#ffffff",
+          "on-error-container": "#93000a",
+          "on-primary-fixed-variant": "#5d4201",
+          "secondary-fixed-dim": "#86d8a1",
+          "on-secondary-fixed-variant": "#00522d",
+          "primary-fixed": "#ffdea5",
+          "primary-container": "#c5a059"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "margin": "1.5rem",
+          "space-md": "0.75rem",
+          "space-lg": "1rem",
+          "space-sm": "0.5rem",
+          "space-xs": "0.25rem",
+          "space-2xl": "2rem",
+          "margin-compact": "1rem",
+          "gutter": "1rem",
+          "gutter-lg": "1.5rem",
+          "space-xl": "1.5rem"
+        },
+        "fontFamily": {
+          "label-md": ["Plus Jakarta Sans"],
+          "body-lg": ["Plus Jakarta Sans"],
+          "numeric-md": ["Plus Jakarta Sans"],
+          "numeric-lg": ["Plus Jakarta Sans"],
+          "headline-md": ["Plus Jakarta Sans"],
+          "body-sm": ["Plus Jakarta Sans"],
+          "headline-lg": ["Plus Jakarta Sans"],
+          "display-md": ["Plus Jakarta Sans"],
+          "label-lg": ["Plus Jakarta Sans"],
+          "body-md": ["Plus Jakarta Sans"],
+          "label-sm": ["Plus Jakarta Sans"],
+          "display-lg": ["Plus Jakarta Sans"],
+          "numeric-display": ["Plus Jakarta Sans"]
+        },
+        "fontSize": {
+          "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+          "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "500"}],
+          "numeric-md": ["15px", {"lineHeight": "20px", "fontWeight": "600"}],
+          "numeric-lg": ["20px", {"lineHeight": "26px", "fontWeight": "600"}],
+          "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+          "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+          "headline-lg": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+          "display-md": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+          "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+          "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+          "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600"}],
+          "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "numeric-display": ["32px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  @layer base {
+    body { overscroll-behavior: none; }
+  }
+  .custom-scrollbar::-webkit-scrollbar { width: 4px; height: 4px; }
+  .custom-scrollbar::-webkit-scrollbar-thumb { background: #d1c5b4; border-radius: 9999px; }
+  body.login-shell {
+    background-color: #F8F5F0; color: #1F1E1D;
+    user-select: none; -webkit-user-select: none; touch-action: manipulation;
+  }
+  /* Royale login palette (dari login_kasir_gym) */
+  .bg-royale-gold { background-color: #C5A059; }
+  .hover\:bg-royale-gold:hover { background-color: #C5A059; }
+  .hover\:bg-royale-gold-hover:hover { background-color: #b38f49; }
+  .bg-royale-gold-light { background-color: #FDF9F3; }
+  .bg-royale-gold\/15 { background-color: rgba(197,160,89,0.15); }
+  .bg-royale-gold\/10 { background-color: rgba(197,160,89,0.10); }
+  .border-royale-gold { border-color: #C5A059; }
+  .border-royale-gold\/20 { border-color: rgba(197,160,89,0.20); }
+  .border-royale-gold\/30 { border-color: rgba(197,160,89,0.30); }
+  .border-royale-border { border-color: #EDE8E0; }
+  .border-2 { border-width: 2px; }
+  .bg-royale-cream { background-color: #FBF9F5; }
+  .bg-royale-dark { background-color: #1F1E1D; }
+  .text-royale-gold { color: #C5A059; }
+  .text-royale-dark { color: #1F1E1D; }
+  .text-royale-gray { color: #787570; }
+  .hover\:text-royale-dark:hover { color: #1F1E1D; }
+  .hover\:text-royale-gold:hover { color: #C5A059; }
+  .shadow-royale-gold\/30 { box-shadow: 0 2px 8px rgba(197,160,89,0.30); }
+  .shadow-royale-gold\/25 { box-shadow: 0 4px 14px rgba(197,160,89,0.25); }
+  .ring-royale-gold\/20 { box-shadow: 0 0 0 4px rgba(197,160,89,0.20); }
+  .shadow-warm-sm { box-shadow: 0 2px 8px rgba(197,160,89,0.08); }
+  .shadow-warm-md { box-shadow: 0 6px 20px rgba(70,50,20,0.06); }
+  .shadow-warm-lg { box-shadow: 0 12px 32px rgba(197,160,89,0.12); }
+  .hover\:border-royale-gold\/60:hover { border-color: rgba(197,160,89,0.60); }
+  .focus\:border-royale-gold:focus { border-color: #C5A059; }
+  .focus\:ring-royale-gold:focus { box-shadow: 0 0 0 2px #C5A059; }
+  .pulse-dot { box-shadow: 0 0 0 0 rgba(16,185,129,0.6); animation: pulse-ring 2s infinite; }
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 rgba(16,185,129,0.6); }
+    70% { box-shadow: 0 0 0 7px rgba(16,185,129,0); }
+    100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); }
+  }
+  .scanner-line {
+    background: linear-gradient(180deg, rgba(197,160,89,0) 0%, rgba(197,160,89,0.85) 50%, rgba(197,160,89,0) 100%);
+    animation: scan 2.4s cubic-bezier(0.4,0,0.2,1) infinite;
+  }
+  @keyframes scan {
+    0% { top: 10%; opacity: 0.3; } 50% { top: 75%; opacity: 1; } 100% { top: 10%; opacity: 0.3; }
+  }
+  /* SPA shell */
+  #app-root { display: contents; }
+  .view { display: none; }
+  .view.active { display: flex; }
+  .view.is-login { display: none; }
+  .view.is-login.active { display: block; }
+  .view.is-login.active > div { min-height: 100vh; }
+  #shell-splash { position: fixed; inset: 0; z-index: 100; background: #fff8f1; display: flex; align-items: center; justify-content: center; transition: opacity .45s ease; }
+  #shell-splash.fade-out { opacity: 0; pointer-events: none; }
+  .nav-link { cursor: pointer; }
+  .view img, .view video { max-width: 100%; }
+
+  /* ============================================================
+   * RESPONSIVE & TAB-FRIENDLY
+   * - sidebar statik (sticky) di desktop, drawer di <= 1023px
+   * - grid konten menumpuk vertikal di layar sempit
+   * - target sentuh membesar di pointer kasar (tablet)
+   * ============================================================ */
+  .rg-burger, .rg-close, .rg-scrim { display: none; }
+  .view .rg-sidebar { position: sticky; top: 0; height: 100vh; align-self: flex-start; flex: none; }
+  .view :focus-visible { outline: 2px solid #775a19; outline-offset: 2px; }
+  button, a, input, select, textarea { touch-action: manipulation; }
+
+  /* tablet & lebih kecil: sidebar jadi drawer */
+  @media (max-width: 1023px) {
+    .view .rg-sidebar {
+      position: fixed; top: 0; bottom: 0; left: 0; z-index: 80;
+      width: 264px; max-width: 86vw; height: auto !important; min-height: 100vh;
+      transform: translateX(-106%);
+      transition: transform .28s cubic-bezier(.4,0,.2,1);
+      box-shadow: 0 12px 36px rgba(30,27,23,.22);
+    }
+    .view .rg-sidebar.open { transform: translateX(0); }
+    .view .rg-scrim {
+      display: block; position: fixed; inset: 0; z-index: 75;
+      background: rgba(30,27,23,.38);
+      opacity: 0; pointer-events: none; transition: opacity .25s ease;
+    }
+    .view .rg-scrim.show { opacity: 1; pointer-events: auto; }
+    .view .rg-burger, .view .rg-close { display: inline-flex; }
+    .view .rg-hide-md { display: none !important; }
+    .view .nav-link { min-height: 48px !important; padding-top: 12px !important; padding-bottom: 12px !important; font-size: 13px !important; }
+    .view .nav-link svg { width: 18px !important; height: 18px !important; }
+  }
+
+  /* layar sedang: KPI 4 -> 2 kolom */
+  @media (max-width: 1079px) {
+    .view .grid-cols-4:not(.gap-2\.5) { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
+  }
+
+  /* mobile: konten utama di-stack vertikal */
+  @media (max-width: 860px) {
+    .view .grid-cols-12 { grid-template-columns: 1fr !important; }
+    .view .col-span-7, .view .col-span-5, .view .col-span-8, .view .col-span-4 { grid-column: 1 / -1 !important; }
+    .view .flex-1.flex.gap-3.overflow-hidden { flex-wrap: wrap; }
+    .view section.flex-\[1\.6\], .view section.flex-1 { flex: 1 1 100% !important; min-width: 0; }
+    .view .h-full { height: auto !important; }
+  }
+
+  @media (max-width: 620px) {
+    .view .grid-cols-4:not(.gap-2\.5) { grid-template-columns: 1fr !important; }
+    .view .grid-cols-3:not([data-purpose="numpad"]) { grid-template-columns: 1fr !important; }
+    .view .rg-hide-sm { display: none !important; }
+    .view header, .view footer { padding-inline: 1rem !important; }
+    .view .px-6 { padding-inline: 1rem !important; }
+    .view header[data-purpose="app-header"] { flex-wrap: wrap; row-gap: 8px; }
+  }
+
+  @media (max-width: 480px) {
+    .view .rg-hide-xs { display: none !important; }
+  }
+</style>
+<meta content="web_dashboard" name="shell-type"/>
+</head>
+<body class="w-full min-h-screen flex bg-background text-on-surface font-body-md">
+
+<!-- ============================================== -->
+<!-- SPLASH SCREEN (boot awal)                      -->
+<!-- ============================================== -->
+<div id="shell-splash">
+  <div class="flex flex-col items-center gap-5">
+    <div class="w-20 h-20 rounded-3xl bg-primary-container flex items-center justify-center text-white shadow-lg">
+      <svg class="w-11 h-11" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewBox="0 0 24 24">
+        <path d="M6 5v14M18 5v14M2 9v6M22 9v6M6 12h12"></path>
+      </svg>
+    </div>
+    <div class="text-center">
+      <h1 class="text-2xl font-extrabold tracking-tight text-on-surface uppercase leading-none">Royale</h1>
+      <p class="text-sm font-medium text-on-surface-variant mt-1">Gym Management &amp; POS &amp; Attendance</p>
+    </div>
+    <div class="flex items-center gap-2 mt-2">
+      <div class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></div>
+      <span class="text-xs font-semibold text-on-surface-variant">Memuat Terminal Kasir…</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================== -->
+<!-- VIEW CONTAINERS                                -->
+<!-- ============================================== -->
+<div id="view-login-gym" class="view is-login w-full min-h-screen"></div>
+<div id="view-login-cafe" class="view is-login w-full min-h-screen"></div>
+
+<div id="view-dashboard" class="view w-full min-h-screen"></div>
+<div id="view-member" class="view w-full min-h-screen"></div>
+<div id="view-pos" class="view w-full min-h-screen"></div>
+<div id="view-laporan" class="view w-full min-h-screen"></div>
+
+<script src="router.js"></script>
+</body>
+</html>

@@ -1,0 +1,302 @@
+
+<!-- BEGIN: TopHeader -->
+<header class="bg-white border-b border-royale-border px-6 py-3.5 shadow-sm sticky top-0 z-30 flex-shrink-0" data-purpose="app-header">
+<div class="max-w-[1440px] mx-auto flex items-center justify-between">
+<!-- Logo and App Identity -->
+<div class="flex items-center gap-3.5" data-purpose="brand-identity">
+<div class="w-11 h-11 rounded-xl bg-royale-gold flex items-center justify-center text-white shadow-sm shadow-royale-gold/30">
+<!-- Combined Barbell & Coffee Cup Icon SVG -->
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24">
+<path d="M2 10h3v4H2z"></path>
+<path d="M19 10h3v4h-3z"></path>
+<path d="M5 12h14"></path>
+<path d="M7 8h10a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-2a3 3 0 0 1 3-3z" fill="#C5A059" fill-opacity="0.2"></path>
+<path d="M9 18h6"></path>
+</svg>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h1 class="text-xl font-extrabold tracking-tight text-royale-dark font-sans leading-none">ROYALE</h1>
+<span class="text-[10px] font-bold px-2 py-0.5 rounded bg-royale-gold/15 text-royale-gold border border-royale-gold/30 tracking-wider">POS v2.4</span>
+</div>
+<p class="text-xs text-royale-gray font-medium mt-0.5">Gym &amp; Cafe Management &amp; Attendance System</p>
+</div>
+</div>
+<!-- Hardware & Cloud Status Bar -->
+<div class="flex items-center gap-4 text-xs" data-purpose="hardware-status"><div class="hidden md:flex items-center gap-2 bg-royale-cream border border-royale-border px-3 py-1.5 rounded-lg text-royale-dark font-medium" id="terminalBadge"><svg class="w-3.5 h-3.5 text-royale-gold" fill="none" stroke="currentColor" viewbox="0 0 24 24"><rect height="14" rx="2" stroke-width="2" width="20" x="2" y="3"></rect><line stroke-width="2" x1="8" x2="16" y1="21" y2="21"></line><line stroke-width="2" x1="12" x2="12" y1="17" y2="21"></line></svg><span id="terminalName">Terminal Kasir #02 • Barista Cafe Counter</span></div><div class="flex items-center gap-2 bg-emerald-50 border border-emerald-200/80 px-3 py-1.5 rounded-lg text-emerald-800 font-semibold"><span class="w-2 h-2 rounded-full bg-emerald-500 pulse-dot"></span><span id="systemStatus">Online • POS Cafe Siap</span></div><div class="bg-royale-cream border border-royale-border px-3.5 py-1.5 rounded-lg text-right font-mono" data-purpose="live-clock"><span class="text-xs text-royale-gray font-sans font-medium block leading-tight" id="currentDate">Minggu, 27 Sep 2026</span><span class="text-sm font-bold text-royale-dark leading-tight tracking-tight" id="currentTime">18.50.36 WIB</span></div></div>
+</div>
+</header>
+<!-- END: TopHeader -->
+<!-- BEGIN: MainContent -->
+<main class="flex-grow flex items-center justify-center p-4 lg:p-6" data-purpose="login-container">
+<div class="w-full max-w-xl bg-white rounded-3xl border border-royale-border shadow-warm-md overflow-hidden p-6 sm:p-8 flex flex-col justify-between" data-purpose="pin-authentication-panel">
+<div>
+<!-- Title & Prompt -->
+<div class="text-center mb-5">
+<span class="text-xs font-bold uppercase tracking-wider text-royale-gold">Autentikasi Kasir</span>
+<h2 class="text-2xl font-bold text-royale-dark tracking-tight mt-0.5">Login Kasir</h2>
+<!-- Outlet Unit Tab Switcher (GYM vs CAFE) -->
+<div class="mt-4 p-1 bg-royale-cream rounded-2xl border border-royale-border flex items-center gap-1.5 shadow-sm"><button class="flex-1 py-2.5 px-3 rounded-xl text-royale-gray hover:text-royale-dark hover:bg-stone-50 font-bold text-xs uppercase tracking-wider transition-all duration-150 flex items-center justify-center gap-2" id="tab-gym" onclick="switchOutlet('gym')" type="button"><span class="text-base leading-none">🏋️</span><span>KASIR GYM</span></button><button class="flex-1 py-2.5 px-3 rounded-xl bg-royale-gold text-white font-bold text-xs uppercase tracking-wider transition-all duration-150 flex items-center justify-center gap-2 shadow-sm" id="tab-cafe" onclick="switchOutlet('cafe')" type="button"><span class="text-base leading-none">☕</span><span>KASIR CAFE</span></button></div>
+</div>
+<!-- Fast Staff Selector Cards -->
+<div class="mb-4" data-purpose="cashier-cards-selector">
+<p class="text-xs font-semibold text-royale-gray uppercase tracking-wider mb-2.5 text-center">Pilih Kasir Bertugas:</p>
+<div class="grid grid-cols-3 gap-3" id="staffSelectorList"><button class="staff-card active group relative p-3 rounded-2xl border-2 border-royale-gold bg-royale-gold-light text-left transition-all duration-150 shadow-sm flex flex-col justify-between" data-staff-name="Siti Rahma" onclick="selectStaff('Siti Rahma', 'Barista &amp; Kasir Cafe', 'SR', '#E08E45')" type="button"><div class="flex items-center justify-between w-full mb-2"><div class="w-9 h-9 rounded-full bg-[#E08E45] text-white font-bold text-sm flex items-center justify-center shadow-sm">SR</div><span class="staff-indicator w-2.5 h-2.5 rounded-full bg-royale-gold ring-4 ring-royale-gold/20"></span></div><div><div class="flex items-center gap-1 mb-0.5"><span class="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.2 rounded bg-[#E08E45]/15 text-[#E08E45]">CAFE</span></div><h4 class="font-bold text-sm text-royale-dark leading-tight">Siti Rahma</h4><p class="text-[11px] text-royale-gray font-medium mt-0.5 truncate">Barista &amp; Kasir Cafe</p></div></button><button class="staff-card group relative p-3 rounded-2xl border border-royale-border hover:border-royale-gold/60 bg-white text-left transition-all duration-150 flex flex-col justify-between" data-staff-name="Dimas Arya" onclick="selectStaff('Dimas Arya', 'Head Barista / F&amp;B', 'DA', '#C5A059')" type="button"><div class="flex items-center justify-between w-full mb-2"><div class="w-9 h-9 rounded-full bg-royale-gold text-white font-bold text-sm flex items-center justify-center shadow-sm">DA</div><span class="staff-indicator hidden w-2.5 h-2.5 rounded-full bg-royale-gold ring-4 ring-royale-gold/20"></span></div><div><div class="flex items-center gap-1 mb-0.5"><span class="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.2 rounded bg-[#E08E45]/15 text-[#E08E45]">CAFE</span></div><h4 class="font-bold text-sm text-royale-dark leading-tight">Dimas Arya</h4><p class="text-[11px] text-royale-gray font-medium mt-0.5 truncate">Head Barista / F&amp;B</p></div></button><button class="staff-card group relative p-3 rounded-2xl border border-royale-border hover:border-royale-gold/60 bg-white text-left transition-all duration-150 flex flex-col justify-between" data-staff-name="Fajar Nugraha" onclick="selectStaff('Fajar Nugraha', 'Kitchen &amp; Cashier', 'FN', '#4F6D7A')" type="button"><div class="flex items-center justify-between w-full mb-2"><div class="w-9 h-9 rounded-full bg-[#4F6D7A] text-white font-bold text-sm flex items-center justify-center shadow-sm">FN</div><span class="staff-indicator hidden w-2.5 h-2.5 rounded-full bg-royale-gold ring-4 ring-royale-gold/20"></span></div><div><div class="flex items-center gap-1 mb-0.5"><span class="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.2 rounded bg-[#E08E45]/15 text-[#E08E45]">CAFE</span></div><h4 class="font-bold text-sm text-royale-dark leading-tight">Fajar Nugraha</h4><p class="text-[11px] text-royale-gray font-medium mt-0.5 truncate">Kitchen &amp; Cashier</p></div></button></div>
+</div><div class="mb-4" data-purpose="shift-selector"><p class="text-xs font-semibold text-royale-gray uppercase tracking-wider mb-2 text-center">Pilih Shift Operasional:</p><div class="grid grid-cols-3 gap-2.5"><button class="shift-card active px-2.5 py-2 rounded-xl border-2 border-royale-gold bg-royale-gold-light text-center transition-all duration-150 shadow-sm flex flex-col items-center justify-center" type="button"><div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-royale-gold"></span><span class="font-bold text-xs text-royale-dark">Shift Pagi</span></div><span class="text-[10px] text-royale-gold font-semibold font-mono mt-0.5">06:00 - 14:00</span></button><button class="shift-card px-2.5 py-2 rounded-xl border border-royale-border bg-white text-center transition-all duration-150 hover:border-royale-gold/60 flex flex-col items-center justify-center" type="button"><div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-stone-300"></span><span class="font-bold text-xs text-royale-dark">Shift Sore</span></div><span class="text-[10px] text-royale-gray font-medium font-mono mt-0.5">14:00 - 22:00</span></button><button class="shift-card px-2.5 py-2 rounded-xl border border-royale-border bg-white text-center transition-all duration-150 hover:border-royale-gold/60 flex flex-col items-center justify-center" type="button"><div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-stone-300"></span><span class="font-bold text-xs text-royale-dark">Shift Malam</span></div><span class="text-[10px] text-royale-gray font-medium font-mono mt-0.5">22:00 - 06:00</span></button></div></div>
+<!-- Active Staff Prompt & PIN Digits Display -->
+<div class="text-center py-2" data-purpose="pin-display">
+<div class="inline-flex items-center gap-2 text-xs font-semibold text-royale-gray mb-2">
+<span class="">Masukkan 6-Digit PIN Kasir untuk:</span>
+<span class="text-royale-gold font-bold bg-royale-gold/10 px-2 py-0.5 rounded border border-royale-gold/20" id="selectedStaffLabel">Siti Rahma</span>
+</div>
+<!-- PIN Circles Indicator -->
+<div class="flex justify-center items-center gap-3.5 my-2">
+<div class="w-4 h-4 rounded-full border-2 border-royale-border transition-all duration-150" id="dot-0"></div>
+<div class="w-4 h-4 rounded-full border-2 border-royale-border transition-all duration-150" id="dot-1"></div>
+<div class="w-4 h-4 rounded-full border-2 border-royale-border transition-all duration-150" id="dot-2"></div>
+<div class="w-4 h-4 rounded-full border-2 border-royale-border transition-all duration-150" id="dot-3"></div>
+<div class="w-4 h-4 rounded-full border-2 border-royale-border transition-all duration-150" id="dot-4"></div>
+<div class="w-4 h-4 rounded-full border-2 border-royale-border transition-all duration-150" id="dot-5"></div>
+</div>
+<!-- Validation/Feedback Alert Bar -->
+<div class="h-6 flex items-center justify-center text-xs font-medium text-rose-500 opacity-0 transition-opacity" id="pinAlert">
+PIN salah atau kurang dari 6 digit!
+</div>
+</div>
+<!-- Touch Ergonomic Keypad -->
+<div class="max-w-[340px] mx-auto grid grid-cols-3 gap-2.5 pt-1" data-purpose="numpad">
+<!-- Row 1 -->
+<button class="h-14 rounded-2xl bg-royale-cream hover:bg-royale-gold hover:text-white border border-royale-border font-bold text-xl text-royale-dark active:scale-95 transition shadow-sm" onclick="pressDigit('1')" type="button">1</button>
+<button class="h-14 rounded-2xl bg-royale-cream hover:bg-royale-gold hover:text-white border border-royale-border font-bold text-xl text-royale-dark active:scale-95 transition shadow-sm" onclick="pressDigit('2')" type="button">2</button>
+<button class="h-14 rounded-2xl bg-royale-cream hover:bg-royale-gold hover:text-white border border-royale-border font-bold text-xl text-royale-dark active:scale-95 transition shadow-sm" onclick="pressDigit('3')" type="button">3</button>
+<!-- Row 2 -->
+<button class="h-14 rounded-2xl bg-royale-cream hover:bg-royale-gold hover:text-white border border-royale-border font-bold text-xl text-royale-dark active:scale-95 transition shadow-sm" onclick="pressDigit('4')" type="button">4</button>
+<button class="h-14 rounded-2xl bg-royale-cream hover:bg-royale-gold hover:text-white border border-royale-border font-bold text-xl text-royale-dark active:scale-95 transition shadow-sm" onclick="pressDigit('5')" type="button">5</button>
+<button class="h-14 rounded-2xl bg-royale-cream hover:bg-royale-gold hover:text-white border border-royale-border font-bold text-xl text-royale-dark active:scale-95 transition shadow-sm" onclick="pressDigit('6')" type="button">6</button>
+<!-- Row 3 -->
+<button class="h-14 rounded-2xl bg-royale-cream hover:bg-royale-gold hover:text-white border border-royale-border font-bold text-xl text-royale-dark active:scale-95 transition shadow-sm" onclick="pressDigit('7')" type="button">7</button>
+<button class="h-14 rounded-2xl bg-royale-cream hover:bg-royale-gold hover:text-white border border-royale-border font-bold text-xl text-royale-dark active:scale-95 transition shadow-sm" onclick="pressDigit('8')" type="button">8</button>
+<button class="h-14 rounded-2xl bg-royale-cream hover:bg-royale-gold hover:text-white border border-royale-border font-bold text-xl text-royale-dark active:scale-95 transition shadow-sm" onclick="pressDigit('9')" type="button">9</button>
+<!-- Row 4 -->
+<button class="h-14 rounded-2xl bg-stone-100 hover:bg-rose-50 hover:text-rose-600 border border-royale-border font-semibold text-xs text-royale-gray uppercase tracking-wider active:scale-95 transition" onclick="clearPin()" type="button">RESET</button>
+<button class="h-14 rounded-2xl bg-royale-cream hover:bg-royale-gold hover:text-white border border-royale-border font-bold text-xl text-royale-dark active:scale-95 transition shadow-sm" onclick="pressDigit('0')" type="button">0</button>
+<button aria-label="Hapus Satu Digit" class="h-14 rounded-2xl bg-stone-100 hover:bg-stone-200 border border-royale-border flex items-center justify-center text-royale-dark active:scale-95 transition" onclick="deleteDigit()" type="button">
+<svg class="w-6 h-6 text-royale-gray" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 12l6.5-7.5H20a2 2 0 012 2v11a2 2 0 01-2 2H9.5L3 12z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+</div>
+<!-- Submit Button for Cashier Entry -->
+<div class="mt-6 pt-3 border-t border-royale-border flex items-center justify-between gap-4">
+<button class="text-xs font-semibold text-royale-gray hover:text-royale-gold flex items-center gap-1.5 transition" onclick="openAdminModal()" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="">Login Password Owner</span>
+</button>
+<button class="w-48 py-3.5 px-6 rounded-2xl bg-royale-gold hover:bg-royale-gold-hover text-white font-bold text-sm tracking-wide shadow-md shadow-royale-gold/25 transition flex items-center justify-center gap-2 active:scale-98" id="btnLogin" onclick="submitPinLogin()" type="button"><span class="">MASUK KASIR CAFE</span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg></button>
+</div>
+</div>
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: BottomStatusFooter -->
+<footer class="bg-white border-t border-royale-border py-2.5 px-6 text-center text-xs text-royale-gray flex-shrink-0" data-purpose="footer-copyright">
+<div class="max-w-[1440px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+<div class="flex items-center gap-4">
+<span class="">© 2026 Royale Gym &amp; Cafe Group. Hak Cipta Dilindungi.</span>
+<span class="hidden sm:inline">•</span>
+<span class="hidden sm:inline">Encrypted Terminal End-to-End</span>
+</div>
+<div class="flex items-center gap-3" id="footerHardwareStatus"><span class="inline-flex items-center gap-1 text-[11px] text-zinc-500"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Thermal Printer Struk Cafe Siap</span><span class="inline-flex items-center gap-1 text-[11px] text-zinc-500"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> QRIS Standby</span></div>
+</div>
+</footer>
+<!-- END: BottomStatusFooter -->
+<!-- BEGIN: AdminLoginModal -->
+<div class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4" data-purpose="admin-modal" id="adminModal">
+<div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-warm-lg border border-royale-border relative animate-in fade-in zoom-in duration-200">
+<button class="absolute top-5 right-5 text-gray-400 hover:text-royale-dark" onclick="closeAdminModal()" type="button">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-xl bg-royale-gold/15 text-royale-gold flex items-center justify-center">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div>
+<h3 class="text-base font-bold text-royale-dark">Otorisasi Owner / Manager</h3>
+<p class="text-xs text-royale-gray">Gunakan akun utama sistem Royale</p>
+</div>
+</div>
+<form class="space-y-3.5" onsubmit="handleAdminSubmit(event)">
+<div>
+<label class="block text-xs font-semibold text-royale-dark mb-1">Email / ID Pengelola</label>
+<input class="w-full text-xs rounded-xl border-royale-border focus:border-royale-gold focus:ring-royale-gold" placeholder="owner@royalegymcafe.com" required="" type="email"/>
+</div>
+<div>
+<label class="block text-xs font-semibold text-royale-dark mb-1">Master Password</label>
+<input class="w-full text-xs rounded-xl border-royale-border focus:border-royale-gold focus:ring-royale-gold" placeholder="••••••••••••" required="" type="password"/>
+</div>
+<div class="pt-2 flex gap-2">
+<button class="flex-1 py-2.5 rounded-xl border border-royale-border font-semibold text-xs text-royale-gray hover:bg-stone-50 transition" onclick="closeAdminModal()" type="button">Batal</button>
+<button class="flex-1 py-2.5 rounded-xl bg-royale-gold text-white font-bold text-xs hover:bg-royale-gold-hover transition shadow-sm" type="submit">Masuk Sistem</button>
+</div>
+</form>
+</div>
+</div>
+<!-- END: AdminLoginModal -->
+<!-- BEGIN: Scripts -->
+
+
+<!-- END: Scripts -->
+
+<script data-purpose="clock-manager">
+    // Live Clock Update
+    function updateClock() {
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' }) + ' WIB';
+      const dateStr = now.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
+      
+      const timeElem = document.getElementById('currentTime');
+      const dateElem = document.getElementById('currentDate');
+      if (timeElem) timeElem.textContent = timeStr;
+      if (dateElem) dateElem.textContent = dateStr;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+<script data-purpose="pin-numpad-logic">
+    // State management for PIN input
+    let pinCode = "";
+    const MAX_PIN = 6;
+    let currentStaff = "Adimas";
+
+    function updatePinDots() {
+      for (let i = 0; i < MAX_PIN; i++) {
+        const dot = document.getElementById(`dot-${i}`);
+        if (dot) {
+          if (i < pinCode.length) {
+            dot.className = "w-4 h-4 rounded-full bg-royale-gold border-2 border-royale-gold transform scale-110 shadow-sm transition-all duration-150";
+          } else {
+            dot.className = "w-4 h-4 rounded-full border-2 border-royale-border bg-transparent transition-all duration-150";
+          }
+        }
+      }
+      hideAlert();
+    }
+
+    function pressDigit(digit) {
+      if (pinCode.length < MAX_PIN) {
+        pinCode += digit;
+        updatePinDots();
+        
+        // Auto trigger submit when 6 digits are complete
+        if (pinCode.length === MAX_PIN) {
+          setTimeout(submitPinLogin, 250);
+        }
+      }
+    }
+
+    function deleteDigit() {
+      if (pinCode.length > 0) {
+        pinCode = pinCode.slice(0, -1);
+        updatePinDots();
+      }
+    }
+
+    function clearPin() {
+      pinCode = "";
+      updatePinDots();
+      hideAlert();
+    }
+
+    function showAlert(msg) {
+      const alertElem = document.getElementById('pinAlert');
+      if (alertElem) {
+        alertElem.textContent = msg;
+        alertElem.classList.remove('opacity-0');
+      }
+    }
+
+    function hideAlert() {
+      const alertElem = document.getElementById('pinAlert');
+      if (alertElem) {
+        alertElem.classList.add('opacity-0');
+      }
+    }
+
+    function selectStaff(name, role, initials, colorHex) {
+      currentStaff = name;
+      document.getElementById('selectedStaffLabel').textContent = name;
+      
+      // Update styling on staff buttons
+      const cards = document.querySelectorAll('.staff-card');
+      cards.forEach(card => {
+        const staffIndicator = card.querySelector('.staff-indicator');
+        if (card.getAttribute('data-staff-name') === name) {
+          card.classList.add('border-royale-gold', 'bg-royale-gold-light', 'shadow-sm');
+          card.classList.remove('border-royale-border', 'bg-white');
+          if (staffIndicator) staffIndicator.classList.remove('hidden');
+        } else {
+          card.classList.remove('border-royale-gold', 'bg-royale-gold-light', 'shadow-sm');
+          card.classList.add('border-royale-border', 'bg-white');
+          if (staffIndicator) staffIndicator.classList.add('hidden');
+        }
+      });
+
+      // Clear any partial PIN on cashier switch
+      clearPin();
+    }
+
+    function submitPinLogin() {
+      if (pinCode.length < MAX_PIN) {
+        showAlert('Harap lengkapi 6-digit PIN Anda');
+        return;
+      }
+
+      // Successful login simulation
+      const btn = document.getElementById('btnLogin');
+      btn.innerHTML = `<svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg> <span>MEMBUKA...</span>`;
+      
+      setTimeout(() => {
+        royaleToast(`Selamat Datang, ${currentStaff}! Shift berhasil dibuka.`);
+        btn.innerHTML = `<span>BUKA KASIR</span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>`;
+        clearPin();
+      }, 700);
+    }
+
+    function simulateFaceLogin() {
+      royaleToast('[Face Terminal AI] Wajah Kasir Teridentifikasi: Adimas (Kasir Shift Pagi) • Confidence 99.4%');
+    }
+
+    // Admin Modal Actions
+    function openAdminModal() {
+      document.getElementById('adminModal').classList.remove('hidden');
+    }
+    function closeAdminModal() {
+      document.getElementById('adminModal').classList.add('hidden');
+    }
+    function handleAdminSubmit(e) {
+      e.preventDefault();
+      royaleToast('Autentikasi Owner Berhasil. Masuk ke Konsol Manajemen...');
+      closeAdminModal();
+    }
+
+    // Keyboard support for testing with physical keyboards or barcode numpads
+    window.addEventListener('keydown', (e) => {
+      if ((document.getElementById('adminModal') && document.getElementById('adminModal').classList.contains('hidden'))) {
+        if (e.key >= '0' && e.key <= '9') {
+          pressDigit(e.key);
+        } else if (e.key === 'Backspace') {
+          deleteDigit();
+        } else if (e.key === 'Escape') {
+          clearPin();
+        } else if (e.key === 'Enter') {
+          submitPinLogin();
+        }
+      }
+    });
+  </script>
